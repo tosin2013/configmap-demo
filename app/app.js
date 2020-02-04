@@ -14,11 +14,19 @@
 
 var express = require('express');
 var app = express();
+var PropertiesReader = require('properties-reader');
+var properties = PropertiesReader('app/ui.properties');
 
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+     res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write('<html><head><title></title></head>');
+      res.write('<body bgcolor="' + properties.get('color') + '">');
+      res.write('<h1>' + process.env.BACKGROUND_MSG + '</h1>');
+      res.write('</body>');
+      res.end('\n');
 });
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
+

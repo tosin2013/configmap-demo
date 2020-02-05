@@ -23,7 +23,7 @@ const fs = require('fs')
 const path = 'app/ui.properties'
 
 try {
-  if (fs.existsSync('/etc/node-app/configmap-demo.config')) {
+  if (fs.existsSync('/etc/node-app/node-app.config')) {
     var properties = PropertiesReader('/etc/node-app/node-app.config');
   }
   else if (fs.existsSync('app/ui.properties'))  {

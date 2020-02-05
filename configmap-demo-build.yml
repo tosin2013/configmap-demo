@@ -24,7 +24,6 @@ items:
       type: Git
       git:
         uri: https://github.com/tosin2013/configmap-demo.git
-      contextDir: app
       secrets: []
     strategy:
       type: Source

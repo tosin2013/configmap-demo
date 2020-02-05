@@ -12,10 +12,27 @@
 
 /*eslint-env node*/
 
+//Use port 8080 in OpenShift
+//Use port 3000 in code ready workspaces
+var port = 8080;
 var express = require('express');
 var app = express();
 var PropertiesReader = require('properties-reader');
-var properties = PropertiesReader('app/ui.properties');
+const fs = require('fs')
+
+const path = 'app/ui.properties'
+
+try {
+  if (fs.existsSync('/etc/node-app/configmap-demo.config')) {
+    var properties = PropertiesReader('/etc/node-app/node-app.config');
+  }
+  else if (fs.existsSync('app/ui.properties'))  {
+    var properties = PropertiesReader('app/ui.properties');
+  }
+} catch(err) {
+  console.error(err)
+}
+
 
 app.get('/', function (req, res) {
      res.writeHead(200, {'Content-Type': 'text/html'});
@@ -26,7 +43,7 @@ app.get('/', function (req, res) {
       res.end('\n');
 });
 
-app.listen(8080, function () {
-  console.log('Configmap-demo listening on port 8080!');
-});
 
+app.listen(port, function () {
+  console.log('Configmap-demo listening on port '+port+'!');
+});

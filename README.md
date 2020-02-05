@@ -1,6 +1,6 @@
-# web-nodejs-sample
+# Configmap Demo Application
 
-ExpressJS Sample Application
+ExpressJS Application using ConfigMaps in OpenShift 4.x
 
 # Developer Workspace
 [![Contribute](http://beta.codenvy.com/factory/resources/codenvy-contribute.svg)](http://beta.codenvy.com/f?id=r8et9w6vohmqvro8)
